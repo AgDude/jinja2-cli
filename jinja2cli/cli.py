@@ -112,7 +112,7 @@ def cli(opts, args):
         raise formats[opts.format][2](u'%s ...' % data[:60])
         sys.exit(1)
 
-    env = Environment(loader=FileSystemLoader(os.getcwd()))
+    env = Environment(loader=FileSystemLoader(os.getcwd()),variable_start_string='[[',variable_end_string=']]')
     sys.stdout.write(env.get_template(args[0]).render(data).encode('utf-8'))
     sys.exit(0)
 
